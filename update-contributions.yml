@@ -1,7 +1,7 @@
 name: Update Contributions Count
 on:
   schedule:
-    - cron: '0 0 * * *'  # Günlük olarak saat 00:00'da çalıştırılacak
+    - cron: '0 0 * * *'
 
 jobs:
   update-contributions:

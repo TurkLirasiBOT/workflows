@@ -3,7 +3,7 @@ const fs = require('fs');
 
 async function updateContributionsCount() {
   try {
-    const username = 'cemobaskann'; // GitHub kullanıcı adınız
+    const username = 'TurkLirasiBOT';
     const response = await axios.get(`https://api.github.com/users/${username}/contributions`);
 
     const contributionsCount = response.data.total_count;

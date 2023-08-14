@@ -3,18 +3,20 @@ const fs = require('fs');
 
 async function updateContributionsCount() {
   try {
-    const username = 'TurkLirasiBOT';
+    const username = 'TurkLirasiBOT'; // GitHub kullanıcı adınız
     const response = await axios.get(`https://api.github.com/users/${username}/contributions`);
 
     const contributionsCount = response.data.total_count;
 
-    const readmeContent = fs.readFileSync('README.md', 'utf8');
+    const readmePath = 'README.md';
+    let readmeContent = fs.readFileSync(readmePath, 'utf8');
+
     const updatedReadmeContent = readmeContent.replace(
-      /(?<=\bKatkılarım: )\d+/,
-      contributionsCount.toString()
+      /Toplamda \*\*<KATKI_SAYISI>\*\* adet katkıda bulundum\./,
+      `Toplamda **${contributionsCount}** adet katkıda bulundum.`
     );
 
-    fs.writeFileSync('README.md', updatedReadmeContent);
+    fs.writeFileSync(readmePath, updatedReadmeContent);
     console.log('README.md güncellendi.');
   } catch (error) {
     console.error('Hata:', error.message);
